@@ -1,55 +1,57 @@
-//Создадим теплый-ламповый конструктор
-//Когструктор включает в себя имя, должность, почту, телефон, оклад и возраст
+abstract class Animal {
+    private final int MAX_RUN_LENGTH = 0;
+    private final int MAX_SWIM_LENGTH = 0;
 
-class Person {
-    private String name;
-    private String position;
-    private String mail;
-    private String phone;
-    private int salary;
-    private int age;
+    abstract void run(int length);
+    abstract void swim(int length);
+}
 
-    public Person(String name, String position, String mail, String phone, int salary, int age) {
-        this.name = name;
-        this.position = position;
-        this.mail = mail;
-        this.phone = phone;
-        this.salary = salary;
-        this.age = age;
-
-
-    }
-    public int getAge() {
-        return age;
+class Cat extends Animal {
+    private final int MAX_RUN_LENGTH = 200;
+    @Override
+    void run(int length) {
+        if ((length >= 0) && (length <= MAX_RUN_LENGTH))
+        {System.out.println("Котик добежит");}
+        else {System.out.println("Котик не добежит");}
     }
 
-    public void fullInfo() {
-        System.out.printf("Name: %s\n Position: %s Email: %s Phone: %s Salary: %d Age: %d\n", name,position,mail,phone,salary,age);
+    @Override
+    void swim(int length) {
+        System.out.println("Котики не плавают");
     }
-
-
-
-
 
 }
 
+class Dog extends Animal {
+    private final int MAX_RUN_LENGTH = 500;
+    private final int MAX_SWIM_LENGTH = 10;
+
+    @Override
+    void run(int length) {
+        if ((length >= 0) && (length <= MAX_RUN_LENGTH)) {System.out.println("Собака добежит");}
+        else {System.out.println("Собака не добежит");}
+
+    }
+
+    @Override
+    void swim(int length) {
+        if ((length >= 0) && (length <= MAX_SWIM_LENGTH)) {System.out.println("Собака доплывет");}
+        else {System.out.println("Собака не доплывет");}
+    }
+}
+
+
+
+
+
 public class Homework {
-    public static void main(String[] args) {
-        Person[] persArray = new Person[5];
-        persArray[0] = new Person ("Johny", "Engineer", "batman@mailbox.com", "89123637781", 80000, 42 );
-        persArray[1] = new Person ("Thomas", "Chief", "karapuzo@mailbox.com", "89126332171", 90000, 37 );
-        persArray[2] = new Person ("Jonas", "Consultant", "geekotan@mailbox.com", "87772123627", 63000, 21 );
-        persArray[3] = new Person ("Diego", "Tech trainer", "bimba@mailbox.com", "89278537556", 78000, 45 );
-        persArray[4] = new Person ("Juan", "Lawyer", "machinegun@mailbox.com", "81192309168", 72500, 47 );
+        public static void main(String[] args) {
+            Cat cat = new Cat();
+            cat.run(201);
+            cat.swim(1);
 
-        //Выведем информацию о сотрудниках старше 40 лет
-
-        System.out.println("\n Эти сотрудники старше сорока лет: ");
-
-        for (int i = 0; i < persArray.length; i++) {
-            if (persArray[i].getAge() > 40) {
-                persArray[i].fullInfo();
-            }
-        }
+            Dog dog = new Dog();
+            dog.run(500);
+            dog.swim(10);
     }
 }
