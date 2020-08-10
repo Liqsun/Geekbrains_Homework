@@ -47,11 +47,11 @@ class Dog extends Animal {
 public class Homework {
         public static void main(String[] args) {
             Cat cat = new Cat();
-            cat.run(201);
-            cat.swim(1);
+            cat.run(163);
+            cat.swim(5);
 
             Dog dog = new Dog();
-            dog.run(500);
+            dog.run(521);
             dog.swim(10);
     }
 }
