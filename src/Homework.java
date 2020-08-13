@@ -1,57 +1,22 @@
-abstract class Animal {
-    private final int MAX_RUN_LENGTH = 0;
-    private final int MAX_SWIM_LENGTH = 0;
-
-    abstract void run(int length);
-    abstract void swim(int length);
-}
-
-class Cat extends Animal {
-    private final int MAX_RUN_LENGTH = 200;
-    @Override
-    void run(int length) {
-        if ((length >= 0) && (length <= MAX_RUN_LENGTH))
-        {System.out.println("Котик добежит");}
-        else {System.out.println("Котик не добежит");}
-    }
-
-    @Override
-    void swim(int length) {
-        System.out.println("Котики не плавают");
-    }
-
-}
-
-class Dog extends Animal {
-    private final int MAX_RUN_LENGTH = 500;
-    private final int MAX_SWIM_LENGTH = 10;
-
-    @Override
-    void run(int length) {
-        if ((length >= 0) && (length <= MAX_RUN_LENGTH)) {System.out.println("Собака добежит");}
-        else {System.out.println("Собака не добежит");}
-
-    }
-
-    @Override
-    void swim(int length) {
-        if ((length >= 0) && (length <= MAX_SWIM_LENGTH)) {System.out.println("Собака доплывет");}
-        else {System.out.println("Собака не доплывет");}
-    }
-}
-
-
-
-
-
 public class Homework {
-        public static void main(String[] args) {
-            Cat cat = new Cat();
-            cat.run(163);
-            cat.swim(5);
-
-            Dog dog = new Dog();
-            dog.run(521);
-            dog.swim(10);
+    public static void main(String[] args) {
+        System.out.println("List of cats:");
+        Cat[] x = {new Cat("Басиндра", 6), new Cat("Пепс", 8), new Cat("Тишка", 13)};
+        Plate plate = new Plate(100);
+        for (Cat c : x) {
+            System.out.println(c);
+        }
+        System.out.println("\n" + plate);
+        System.out.println("***********************************************");
+        System.out.println("Досыпали еды до 100");
+        plate.increaseFood(100);
+        System.out.println(plate);
+        System.out.println("***********************************************");
+        System.out.println("Котики поели:");
+        for (Cat c : x) {
+            c.eat(plate);
+            System.out.println(c);
+            System.out.println(plate);
+        }
     }
 }
